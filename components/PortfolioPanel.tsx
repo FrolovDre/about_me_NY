@@ -17,8 +17,7 @@ export default function PortfolioPanel() {
   const [activeTab, setActiveTab] = useState<TabId>('projects');
 
   return (
-    <div className="relative rounded-3xl border border-white/10 bg-white/5 p-6 shadow-frost backdrop-blur-md">
-      <div className="garland garland-panel" aria-hidden="true" />
+    <div className="relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 via-white/5 to-white/0 p-6 shadow-frost backdrop-blur-xl">
       <div className="flex flex-wrap gap-2">
         {tabs.map((tab) => (
           <button

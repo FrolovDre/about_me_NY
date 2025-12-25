@@ -4,12 +4,9 @@ import { profile } from '../data/profile';
 
 export default function HomePage() {
   return (
-    <main className="relative min-h-screen bg-midnight text-snow">
+    <main className="relative min-h-screen bg-gradient-to-br from-[#0b1220] via-[#0f1f2e] to-[#0b1220] text-snow">
       <div className="mx-auto flex min-h-screen max-w-6xl flex-col gap-10 px-6 py-14 lg:flex-row lg:items-start lg:gap-12">
         <section className="relative flex w-full flex-col items-start gap-6 lg:w-1/2">
-          <div className="absolute -top-10 left-0 h-6 w-full max-w-md">
-            <div className="garland" aria-hidden="true" />
-          </div>
           <div className="relative">
             <span className="bell" aria-hidden="true">🔔</span>
             <Image

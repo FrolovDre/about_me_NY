@@ -8,8 +8,8 @@ type Point = {
   life: number;
 };
 
-const MAX_POINTS = 24;
-const MELT_DISTANCE = 160;
+const MAX_POINTS = 32;
+const MELT_DISTANCE = 180;
 const MELT_TIME = 1200;
 const WET_TIME = 3200;
 
@@ -97,26 +97,47 @@ export default function CursorFireTrail() {
     const draw = () => {
       context.clearRect(0, 0, width, height);
       if (isActiveRef.current) {
+        context.globalCompositeOperation = 'lighter';
         pointsRef.current.forEach((point, index) => {
-          const size = 14 + index * 0.6;
+          const life = Math.max(point.life, 0);
+          const size = 18 + index * 0.9;
+          const inner = size * 0.35;
+          const outer = size * 1.8;
           const gradient = context.createRadialGradient(
+            point.x,
+            point.y,
+            inner,
+            point.x,
+            point.y,
+            outer
+          );
+          gradient.addColorStop(0, `rgba(255, 220, 170, ${0.9 * life})`);
+          gradient.addColorStop(0.35, `rgba(255, 150, 90, ${0.65 * life})`);
+          gradient.addColorStop(0.7, `rgba(255, 90, 40, ${0.35 * life})`);
+          gradient.addColorStop(1, 'rgba(255, 60, 20, 0)');
+          context.fillStyle = gradient;
+          context.beginPath();
+          context.arc(point.x, point.y, outer, 0, Math.PI * 2);
+          context.fill();
+
+          const emberGradient = context.createRadialGradient(
             point.x,
             point.y,
             0,
             point.x,
             point.y,
-            size
+            size * 0.7
           );
-          gradient.addColorStop(0, 'rgba(255, 180, 120, 0.9)');
-          gradient.addColorStop(0.4, 'rgba(255, 110, 60, 0.6)');
-          gradient.addColorStop(1, 'rgba(255, 90, 30, 0)');
-          context.fillStyle = gradient;
+          emberGradient.addColorStop(0, `rgba(255, 255, 255, ${0.3 * life})`);
+          emberGradient.addColorStop(1, 'rgba(255, 120, 80, 0)');
+          context.fillStyle = emberGradient;
           context.beginPath();
-          context.arc(point.x, point.y, size, 0, Math.PI * 2);
+          context.arc(point.x, point.y, size * 0.7, 0, Math.PI * 2);
           context.fill();
 
-          point.life -= 0.04;
+          point.life -= 0.035;
         });
+        context.globalCompositeOperation = 'source-over';
 
         pointsRef.current = pointsRef.current.filter((point) => point.life > 0);
       }
