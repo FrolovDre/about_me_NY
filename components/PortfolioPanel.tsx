@@ -7,6 +7,7 @@ const tabs = [
   { id: 'projects', label: 'Проекты', icon: '🎁' },
   { id: 'experience', label: 'Опыт', icon: '⭐' },
   { id: 'skills', label: 'Навыки', icon: '❄️' },
+  { id: 'education', label: 'Образование', icon: '🎓' },
   { id: 'contact', label: 'Контакты', icon: '🎄' }
 ] as const;
 
@@ -93,12 +94,84 @@ export default function PortfolioPanel() {
         )}
 
         {activeTab === 'skills' && (
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-            {profile.skills.map((skill) => (
-              <div key={skill} className="panel-card" data-snow="true">
-                <span className="text-lg">❄️ {skill}</span>
+          <div className="space-y-5">
+            <div className="panel-card" data-snow="true">
+              <h3 className="text-base font-semibold text-white">Product</h3>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {profile.skills.product.map((skill) => (
+                  <span key={skill} className="tag">
+                    {skill}
+                  </span>
+                ))}
               </div>
+            </div>
+            <div className="panel-card" data-snow="true">
+              <h3 className="text-base font-semibold text-white">PM / Process</h3>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {profile.skills.process.map((skill) => (
+                  <span key={skill} className="tag">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="panel-card" data-snow="true">
+              <h3 className="text-base font-semibold text-white">
+                Analytics / Research
+              </h3>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {profile.skills.analytics.map((skill) => (
+                  <span key={skill} className="tag">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="panel-card" data-snow="true">
+              <h3 className="text-base font-semibold text-white">Tools</h3>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {profile.skills.tools.map((skill) => (
+                  <span key={skill} className="tag">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'education' && (
+          <div className="space-y-5">
+            {profile.education.map((item) => (
+              <article key={item.title} className="panel-card" data-snow="true">
+                <div className="flex items-center gap-2 text-lg font-semibold">
+                  <span aria-hidden="true">🎓</span>
+                  {item.title}
+                </div>
+                <p className="text-white/70">{item.detail}</p>
+                {item.period && (
+                  <p className="text-sm text-white/60">{item.period}</p>
+                )}
+              </article>
             ))}
+            <div className="panel-card" data-snow="true">
+              <h3 className="text-base font-semibold text-white">Languages</h3>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {profile.languages.map((language) => (
+                  <span key={language} className="tag">
+                    {language}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="panel-card" data-snow="true">
+              <h3 className="text-base font-semibold text-white">Other studies</h3>
+              <ul className="mt-3 list-inside list-disc space-y-1 text-white/70">
+                {profile.otherStudies.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         )}
 

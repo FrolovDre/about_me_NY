@@ -39,6 +39,10 @@ export default function HomePage() {
                 <p key={line}>{line}</p>
               ))}
             </div>
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-white/80">
+              <p className="mb-1 text-white/60">What I’m looking for</p>
+              <p data-snow="true">{profile.lookingFor}</p>
+            </div>
           </div>
           <div className="flex flex-col gap-3 text-white/80">
             <div className="flex items-center gap-2">
