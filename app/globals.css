@@ -47,9 +47,9 @@ main {
 .icon-soft {
   width: 18px;
   height: 18px;
-  opacity: 0.75;
-  color: rgba(248, 251, 255, 0.9);
-  filter: drop-shadow(0 6px 12px rgba(140, 180, 255, 0.25));
+  opacity: 0.7;
+  color: rgba(248, 251, 255, 0.85);
+  filter: drop-shadow(0 8px 16px rgba(140, 180, 255, 0.3));
 }
 
 .icon-lg {
@@ -73,7 +73,7 @@ main {
   top: 0;
   left: 0;
   right: 0;
-  height: 14px;
+  height: 12px;
   border-radius: 999px 999px 14px 14px;
   background: linear-gradient(
     180deg,
@@ -91,7 +91,7 @@ main {
     0 8px 18px rgba(190, 210, 255, 0.35),
     inset 0 -4px 6px rgba(200, 220, 255, 0.35);
   opacity: 0;
-  transform: translateY(-85%) scaleX(0.5);
+  transform: translateY(-115%) scaleX(0.45);
   transform-origin: left center;
   animation: snow-drift 18s ease-in-out infinite;
   pointer-events: none;
@@ -100,13 +100,13 @@ main {
 [data-snow='true'].is-melting::before {
   animation: none;
   opacity: 0.6;
-  transform: translateY(-70%) scaleX(0.8);
+  transform: translateY(-100%) scaleX(0.7);
 }
 
 [data-snow='true'].is-wet::before {
   animation: none;
   opacity: 0.2;
-  transform: translateY(-60%) scaleX(0.7);
+  transform: translateY(-95%) scaleX(0.6);
 }
 
 [data-snow='true'].is-wet::after {
@@ -126,19 +126,19 @@ main {
 @keyframes snow-drift {
   0% {
     opacity: 0;
-    transform: translateY(-90%) scaleX(0.35);
+    transform: translateY(-125%) scaleX(0.3);
   }
   40% {
     opacity: 0.7;
-    transform: translateY(-85%) scaleX(0.75);
+    transform: translateY(-115%) scaleX(0.7);
   }
   70% {
     opacity: 1;
-    transform: translateY(-80%) scaleX(1);
+    transform: translateY(-110%) scaleX(1);
   }
   100% {
     opacity: 0.2;
-    transform: translateY(-70%) scaleX(0.6);
+    transform: translateY(-100%) scaleX(0.55);
   }
 }
 
