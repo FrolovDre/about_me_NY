@@ -22,7 +22,10 @@ export default function CursorFireTrail() {
 
   useEffect(() => {
     const isFinePointer = window.matchMedia('(pointer: fine)').matches;
-    if (!isFinePointer) return;
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+    if (!isFinePointer || prefersReducedMotion || navigator.webdriver) return;
 
     const canvas = canvasRef.current;
     if (!canvas) return;
